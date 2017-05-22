@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :pianos do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [ :create]
   end
 
   devise_for :users
