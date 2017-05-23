@@ -1,2 +1,16 @@
-<h1>Pianos#show</h1>
+<!-- <h1>Pianos#show</h1>
 <p>Find me in app/views/pianos/show.html.erb</p>
+ -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1><%= @piano.title %></h1>
+      <br>
+      <id="piano1><%= image_tag "piano1.jpg" %>
+      <h2><%= @piano.category %></h2>
+      <h3><%= @piano.description %></h3>
+      <br>
+      <%= link_to 'Back', pianos_path %>
+    </div>
+  </div>
+</div>
