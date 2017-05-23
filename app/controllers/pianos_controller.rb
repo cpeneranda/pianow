@@ -1,8 +1,10 @@
 class PianosController < ApplicationController
   def index
+    @piano = Piano.all
   end
 
   def show
+    @piano = Piano.find(params[:id])
   end
 
   def new
@@ -10,6 +12,12 @@ class PianosController < ApplicationController
   end
 
   def create
+    @piano = Piano.new(piano_params)
+    if @piano.save
+      redirect_to piano_path(@piano)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -19,5 +27,11 @@ class PianosController < ApplicationController
   end
 
   def destroy
+  end
+
+private
+
+ def piano_params
+    params.require(:piano).permit(:name)
   end
 end
