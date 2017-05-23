@@ -6,6 +6,7 @@ class PianosController < ApplicationController
   end
 
   def new
+    @piano = Piano.new
   end
 
   def create

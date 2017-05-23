@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'bookings/create'
+
   get 'dashboards/dashboard'
 
   resources :pianos do
