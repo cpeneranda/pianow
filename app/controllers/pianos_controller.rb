@@ -1,5 +1,6 @@
 class PianosController < ApplicationController
   def index
+    @pianos = Piano.all
   end
 
   def show
