@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'dashboards/dashboard'
+
   resources :pianos do
     resources :bookings, only: [ :create]
   end
+
+  get "/dashboards", to: "dashboards#dashboard"
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
