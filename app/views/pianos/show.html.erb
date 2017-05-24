@@ -1,24 +1,19 @@
-<!-- <h1>Pianos#show</h1>
-<p>Find me in app/views/pianos/show.html.erb</p>
- -->
-<div class="container">
-  <div class="row">
+<div class="row">
+  <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano1.jpg')%>')">
+  <div class="card-category"><%= @piano.category %></div></div>
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="card">
-        <h1><%= @piano.title %></h1>
-        <br>
-        <div id="piano_picture"><%= image_tag "piano1.jpg" %></div>
-        <br>
-        <h2><%= @piano.category %></h2>
-        <h3><%= @piano.description %></h3>
-
-        <h4><%= @piano.brand.title %></h4>
-        <h4><%= @piano.brand.description %></h4>
-        <br>
-  <%= render 'shared/bookingform', piano: @piano, booking: @booking %>
-        <%= link_to 'Back', pianos_path, class: "btn-blue" %>
+      <div class="wrapper">
+        <div class="card">
+          <div class="card-description">
+            <h1><%= @piano.title %></h1>
+            <h2><%= @piano.description %></h2>
+            <h3><%= @piano.brand.name %></h3>
+            <h4><%= @piano.brand.description %></h4>
+            <br>
+            <%= render 'shared/bookingform', piano: @piano, booking: @booking %>
+            <%= link_to 'Back', pianos_path, class: "btn-black" %>
+          </div>
+        </div>
       </div>
     </div>
-
-  </div>
 </div>
