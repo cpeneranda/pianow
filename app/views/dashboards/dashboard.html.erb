@@ -13,9 +13,6 @@
               <div class="card-description">
                 <p><%= piano.price %> €/h - <%= piano.title.capitalize %></p>
               </div>
-              <div class="card-title">
-                <%= piano.title %>
-              </div>
               <div class="card-details">
                 <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
               </div>
@@ -25,6 +22,8 @@
                     <i class="fa fa-star"></i>
                   <% end %>
                 </p>
+                <p>16 commentaires</p>
+                <p><i class="fa fa-heart"></i></p>
               </div>
             </div>
           </div>
