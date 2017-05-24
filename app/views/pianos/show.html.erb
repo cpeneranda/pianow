@@ -4,23 +4,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1><%= @piano.title %></h1>
-      <br>
-      <id="piano1><%= image_tag "piano1.jpg" %>
-      <h2><%= @piano.category %></h2>
-      <h3><%= @piano.description %></h3>
-      <br>
+      <div class="card">
+        <h1><%= @piano.title %></h1>
+        <br>
+        <div id="piano_picture"><%= image_tag "piano1.jpg" %></div>
+        <br>
+        <h2><%= @piano.category %></h2>
+        <h3><%= @piano.description %></h3>
 
+        <h4><%= @piano.brand.name %></h4>
+        <h4><%= @piano.brand.description %></h4>
+        <br>
   <%= render 'shared/bookingform', piano: @piano, booking: @booking %>
+        <%= link_to 'Back', pianos_path, class: "btn-blue" %>
+      </div>
+    </div>
 
-
-<!--
-  Créer un booking
-  Je crée mon form, dans quel dossier piano ou Booking?
-    Comment rentrer les champs start and end date?
-  J'insere un lien du form dans ma show
-  Quand je crée le booking, il s'insere dans mon dashboard
--->
-     </div>
   </div>
 </div>
