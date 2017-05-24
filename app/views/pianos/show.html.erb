@@ -10,7 +10,17 @@
       <h2><%= @piano.category %></h2>
       <h3><%= @piano.description %></h3>
       <br>
-      <%= link_to 'Back', pianos_path %>
-    </div>
+
+  <%= render 'shared/bookingform', piano: @piano, booking: @booking %>
+
+
+<!--
+  Créer un booking
+  Je crée mon form, dans quel dossier piano ou Booking?
+    Comment rentrer les champs start and end date?
+  J'insere un lien du form dans ma show
+  Quand je crée le booking, il s'insere dans mon dashboard
+-->
+     </div>
   </div>
 </div>

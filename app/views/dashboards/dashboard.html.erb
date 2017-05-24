@@ -15,7 +15,7 @@
   <p>Vous n'avez pas encore de réservations</p>
 <% else %>
   <% current_user.bookings.each do |booking| %>
-    <h5 class="white">Bookin numéro <%= booking.id %></h5>
+    <h5 class="white">Booking numéro <%= booking.id %></h5>
     <p><%= Piano.find(booking.piano_id).title %></p>
   <% end %>
 <% end %>

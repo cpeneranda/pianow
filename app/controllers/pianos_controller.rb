@@ -5,6 +5,7 @@ class PianosController < ApplicationController
 
   def show
     @piano = Piano.find(params[:id])
+    @booking = Booking.new
   end
 
   def new

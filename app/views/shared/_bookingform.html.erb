@@ -1,0 +1,17 @@
+<div class="container">
+  <%= simple_form_for [piano, booking] do |f| %>
+    <div class="col-xs-12 col-sm-6 form">
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :start_date, label_html: { class: 'label-form datepicker' }, input_html: { class: 'input-form' }, placeholder: 'Start Date' %>
+          <%= f.input :end_date, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'End Date'   %>
+        </div>
+      </div>
+    <div class="col-xs-12 form button">
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Book !", class: "text-center"  %>
+    </div>
+    </div>
+      <% end %>
+</div>
