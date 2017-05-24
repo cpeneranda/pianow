@@ -1,0 +1,54 @@
+
+.card {
+  width: 800px;
+  margin: auto;
+  border: 1px white;
+  border-radius: 5px;
+  background-color: white;
+  color: #162C46;
+  padding: 40px ;
+  text-align: justify;
+}
+
+.card h1 {
+  color: #162C46;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #162C46;
+}
+
+.card h3 {
+  font-size: 18px;
+  color: #162C46;
+}
+
+.card h4 {
+  font-size: 14px;
+  font-family: italic;
+  color: #162C46;
+}
+
+#piano_picture {
+  text-align: center;
+}
+
+.btn-blue {
+  background-color: white;
+  color: #162C46;
+  width: 40px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-blue:hover {
+  background-color: #f4f4f4;
+  text-decoration: none;
+}
