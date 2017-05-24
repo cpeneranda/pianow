@@ -13,8 +13,9 @@ class PianosController < ApplicationController
 
   def create
     @piano = Piano.new(piano_params)
+    @piano.user = current_user
     if @piano.save
-      redirect_to piano_path(@piano)
+      redirect_to pianos_path(@piano)
     else
       render :new
     end
@@ -35,6 +36,6 @@ class PianosController < ApplicationController
 private
 
  def piano_params
-    params.require(:piano).permit(:name)
+    params.require(:piano).permit(:title, :description, :address, :category, :price)
   end
 end

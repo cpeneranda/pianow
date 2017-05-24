@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+    <%= simple_form_for(@piano) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :category %>
+        <%= f.input :address %>
+        <%= f.input :price %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
