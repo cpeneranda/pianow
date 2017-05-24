@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     # we need `restaurant_id` to asssociate review with corresponding restaurant
     @booking.piano = Piano.find(params[:piano_id])
+    @booking.user = current_user
     if @booking.save
       redirect_to dashboards_path
     else
