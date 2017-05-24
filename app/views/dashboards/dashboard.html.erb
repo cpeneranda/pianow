@@ -1,24 +1,78 @@
-<h1>Dashboards#dashboard</h1>
-<p>Find me in app/views/dashboards/dashboard.html.erb</p>
-
-<h2>Dashboard de <%= current_user.email %></h2>
-
-<% if current_user.pianos.size == 0 %>
-  <p>Vous n'avez pas encore mis en ligne de piano</p>
-<% else %>
-  <% current_user.pianos.each do |piano| %>
-    <p><%= piano.title %></p>
+<div class="container">
+  <% if current_user.pianos.size == 0 %>
+    <p>Vous n'avez pas encore mis en ligne de piano</p>
+  <% else %>
+    <h3>Vos pianos</h3>
+    <div class="row">
+      <% current_user.pianos.each do |piano| %>
+        <div class="col-xs-6 col-sm-6 col-lg-6">
+          <div class="cards">
+            <%= link_to "", piano_path(piano), class: "cards-link" %>
+            <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+            </div>
+            <div class="cards-info">
+              <div class="cards-description">
+                <p><%= piano.price %> €/h - <%= piano.title.capitalize %></p>
+              </div>
+              <div class="cards-details">
+                <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
+              </div>
+              <div class="cards-ranking">
+                <p>
+                  <% 3.times do %>
+                    <i class="fa fa-star"></i>
+                  <% end %>
+                </p>
+                <p>16 commentaires</p>
+                <p><i class="fa fa-heart"></i></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
 
-<% if current_user.bookings.size == 0 %>
-  <p>Vous n'avez pas encore de réservations</p>
-<% else %>
-  <% current_user.bookings.each do |booking| %>
-    <h5 class="white">Bookin numéro <%= booking.id %></h5>
-    <p><%= Piano.find(booking.piano_id).title %></p>
+  <h3>Réservations de vos pianos</h3>
+  <% if current_user.bookings.size == 0 %>
+    <p>Vous n'avez pas encore de réservations</p>
+  <% else %>
+    <p>Les gens vous ont réservés : </p>
+    <% current_user.bookings.each do |booking| %>
+      <div class="col-xs-6 col-sm-6 col-lg-6">
+        <div class="cards">
+          <% piano = Piano.find(booking.piano_id) %>
+          <%= link_to "", piano_path(piano), class: "cards-link" %>
+          <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+          </div>
+          <div class="cards-info">
+            <div class="cards-description">
+              <p><%= piano.title.capitalize %></p>
+            </div>
+            <div class="cards-details">
+              <p>Booking numéro <%= booking.id %></p>
+              <p>Start_date : <%= booking.start_date %> - End_date : <%= booking.end_date %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+
+  <h3>Vos réservations</h3>
+  <% if @pianos_with_bookings %>
+    <p>Vous avez réservés les pianos suivants : </p>
+    <% @pianos_with_bookings.each do |piano| %>
+      <% piano.bookings.each do |booking| %>
+      <p><%= booking.start_date %></p>
+        <%= booking.end_date %>
+        <%= booking.user.first_name %>
+        <%= booking.user.last_name %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>Vous n'avez pas de réservations</p>
+  <% end %>
 
 
-
+</div>

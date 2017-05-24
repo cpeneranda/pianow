@@ -1,4 +1,4 @@
-.card-link {
+.cards-link {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -8,47 +8,60 @@
   background: black;
   opacity: 0;
 }
-.card {
+.cards {
   box-shadow: 1px 1px 1px lightgrey;
+  max-width: 100%;
+  margin-bottom: 15px;
 }
 
-.card-picture {
+.cards-picture {
   background-size: cover;
-  height: 350px;
+  height: 250px;
   width: 100%;
   border-radius: 2px 2px 0 0;
 }
 
-.card-info {
+.cards-info {
   background-color: white;
-  color: #212121;
   padding: 5px;
   border-radius: 0 0 2px 2px;
 }
 
-.card-description {
+.cards-description {
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
 }
 
-.card-details {
+.cards-description p {
+  color: black;
+}
+
+
+.cards-details p {
+  color: black;
+}
+
+.cards-ranking p {
+  color: black;
+}
+
+.cards-details {
   font-weight: lighter;
   font-size: 14px;
   display: flex;
+  color: black;
 }
 
-.card-ranking {
+.cards-ranking {
   font-weight: lighter;
   font-size: 14px;
   display: flex;
+  color: black;
 }
+
 
 h1 {
   padding: 15px;
-}
-
-.wrapper {
-  color: white;
 }
 
 .fa-star {
@@ -57,4 +70,17 @@ h1 {
 
 p {
  margin: 5px;
+ color: black;
+}
+
+.fix {
+  height: 100%;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
+.wrapper {
+  height: 100vh;
 }

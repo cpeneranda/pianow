@@ -1,21 +1,34 @@
-<!-- <h1>Pianos#show</h1>
-<p>Find me in app/views/pianos/show.html.erb</p>
- -->
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
       <div class="card">
-        <h1><%= @piano.title %></h1>
-        <br>
-        <div id="piano_picture"><%= image_tag "piano1.jpg" %></div>
-        <br>
-        <h2><%= @piano.category %></h2>
-        <h3><%= @piano.description %></h3>
-
-        <h4><%= @piano.brand.name %></h4>
-        <h4><%= @piano.brand.description %></h4>
-        <br>
-        <%= link_to 'Back', pianos_path, class: "btn-blue" %>
+        <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano1.jpg')%>')">
+          <div class="card-category"><%= @piano.category %></div>
+        </div>
+        <div class="card-description">
+          <h1><%= @piano.title %></h1>
+          <h2><%= @piano.description %></h2>
+          <h3><%= @piano.brand.name %></h3>
+          <h4><%= @piano.brand.description %></h4>
+          <div class="bookingform">
+            <%= simple_form_for [@piano, @booking] do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <%= f.input :start_date, label_html: { class: 'label-form datepicker' }, input_html: { class: 'input-form' }, placeholder: 'Start Date' %>
+                <%= f.input :end_date, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'End Date'   %>
+              </div>
+              <div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-actions text-center">
+                    <%= f.button :submit, "Book", class: "btn-black"  %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <br>
+          <%= link_to 'Back', pianos_path, class: "btn-black" %>
+        </div>
+        </div>
       </div>
     </div>
   </div>
