@@ -5,18 +5,19 @@
     <h3>Vos pianos</h3>
     <div class="row">
       <% current_user.pianos.each do |piano| %>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+        <div class="col-xs-6 col-sm-6 col-lg-6">
+          <div class="cards">
+            <%= link_to "", piano_path(piano), class: "cards-link" %>
+            <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
             </div>
-            <div class="card-info">
-              <div class="card-description">
+            <div class="cards-info">
+              <div class="cards-description">
                 <p><%= piano.price %> €/h - <%= piano.title.capitalize %></p>
               </div>
-              <div class="card-details">
+              <div class="cards-details">
                 <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
               </div>
-              <div class="card-ranking">
+              <div class="cards-ranking">
                 <p>
                   <% 3.times do %>
                     <i class="fa fa-star"></i>
@@ -38,10 +39,23 @@
   <% else %>
     <p>Les gens vous ont réservés : </p>
     <% current_user.bookings.each do |booking| %>
-      <h5 class="white">Booking numéro <%= booking.id %>
-        <%= booking.end_date %>
-      </h5>
-      <p><%= Piano.find(booking.piano_id).title %></p>
+      <div class="col-xs-6 col-sm-6 col-lg-6">
+        <div class="cards">
+          <% piano = Piano.find(booking.piano_id) %>
+          <%= link_to "", piano_path(piano), class: "cards-link" %>
+          <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+          </div>
+          <div class="cards-info">
+            <div class="cards-description">
+              <p><%= piano.title.capitalize %></p>
+            </div>
+            <div class="cards-details">
+              <p>Booking numéro <%= booking.id %></p>
+              <p>Start_date : <%= booking.start_date %> - End_date : <%= booking.end_date %></p>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
 
