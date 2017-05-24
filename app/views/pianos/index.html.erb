@@ -2,32 +2,57 @@
   <h1>Pianos à Paris</h1>
   <div class="container">
     <div class="row">
-      <% @pianos.each do |piano| %>
-        <div class="col-xs-12 col-sm-6 col-lg-6">
-          <div class="cards">
-            <%= link_to "", piano_path(piano), class: "cards-link" %>
-            <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+      <div class="col-xs-8 scroll">
+        <div class="row">
+          <% @pianos.each do |piano| %>
+            <div class="col-xs-6 col-sm-6 col-lg-6">
+              <div class="cards">
+                <%= link_to "", piano_path(piano), class: "cards-link" %>
+                <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+                </div>
+                <div class="cards-info">
+                  <div class="cards-description">
+                    <p><%= piano.price %> €/h - <%= piano.title.capitalize %></p>
+                  </div>
+                  <div class="cards-details">
+                    <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
+                  </div>
+                  <div class="cards-ranking">
+                    <p>
+                      <% 3.times do %>
+                        <i class="fa fa-star"></i>
+                      <% end %>
+                    </p>
+                    <p>16 commentaires</p>
+                    <p><i class="fa fa-heart"></i></p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="cards-info">
-              <div class="cards-description">
-                <p><%= piano.price %> €/h - <%= piano.title.capitalize %></p>
-              </div>
-              <div class="cards-details">
-                <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
-              </div>
-              <div class="cards-ranking">
-                <p>
-                  <% 3.times do %>
-                    <i class="fa fa-star"></i>
-                  <% end %>
-                </p>
-                <p>16 commentaires</p>
-                <p><i class="fa fa-heart"></i></p>
-              </div>
-            </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+      <div class="col-xs-4 fix">
+        <div id="map" style="width: 100%; height: 500px;"></div>
+      </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  </script>
+<% end %>

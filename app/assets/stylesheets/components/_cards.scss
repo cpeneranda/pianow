@@ -16,42 +16,52 @@
 
 .cards-picture {
   background-size: cover;
-  height: 350px;
+  height: 250px;
   width: 100%;
   border-radius: 2px 2px 0 0;
 }
 
 .cards-info {
   background-color: white;
-  color: #212121;
   padding: 5px;
   border-radius: 0 0 2px 2px;
 }
 
 .cards-description {
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
+}
+
+.cards-description p {
+  color: black;
+}
+
+
+.cards-details p {
+  color: black;
+}
+
+.cards-ranking p {
+  color: black;
 }
 
 .cards-details {
   font-weight: lighter;
   font-size: 14px;
   display: flex;
+  color: black;
 }
 
 .cards-ranking {
   font-weight: lighter;
   font-size: 14px;
   display: flex;
+  color: black;
 }
 
 
 h1 {
   padding: 15px;
-}
-
-.wrapper {
-  color: white;
 }
 
 .fa-star {
@@ -60,4 +70,17 @@ h1 {
 
 p {
  margin: 5px;
+ color: black;
+}
+
+.fix {
+  height: 100%;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
+.wrapper {
+  height: 100vh;
 }
