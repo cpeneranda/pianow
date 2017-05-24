@@ -1,11 +1,7 @@
-<h1>Dashboards#dashboard</h1>
-<p>Find me in app/views/dashboards/dashboard.html.erb</p>
-
-<h2>Dashboard de <%= current_user.email %></h2>
-
 <% if current_user.pianos.size == 0 %>
   <p>Vous n'avez pas encore mis en ligne de piano</p>
 <% else %>
+  <p>Vos piano</p>
   <% current_user.pianos.each do |piano| %>
     <p><%= piano.title %></p>
   <% end %>
@@ -14,11 +10,28 @@
 <% if current_user.bookings.size == 0 %>
   <p>Vous n'avez pas encore de réservations</p>
 <% else %>
+  <p>Les gens vous ont réservés : </p>
   <% current_user.bookings.each do |booking| %>
-    <h5 class="white">Bookin numéro <%= booking.id %></h5>
+    <h5 class="white">Booking numéro <%= booking.id %>
+      <%= booking.end_date %>
+    </h5>
     <p><%= Piano.find(booking.piano_id).title %></p>
   <% end %>
 <% end %>
 
+<p>Pianos réservés</p>
+<% if @pianos_with_bookings %>
+  <p>Vous avez réservés les pianos suivants : </p>
+  <% @pianos_with_bookings.each do |piano| %>
+    <% piano.bookings.each do |booking| %>
+    <p><%= booking.start_date %></p>
+      <%= booking.end_date %>
+      <%= booking.user.first_name %>
+      <%= booking.user.last_name %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>Vous n'avez pas de réservations</p>
+<% end %>
 
 
