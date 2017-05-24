@@ -1,6 +1,6 @@
 class PianosController < ApplicationController
   def index
-    @piano = Piano.all
+    @pianos = Piano.all
   end
 
   def show
@@ -36,6 +36,6 @@ class PianosController < ApplicationController
 private
 
  def piano_params
-    params.require(:piano).permit(:title, :description, :address, :category, :price)
+    params.require(:piano).permit(:title, :description, :address, :category, :price, :photo)
   end
 end
