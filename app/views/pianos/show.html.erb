@@ -3,14 +3,18 @@
  -->
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1><%= @piano.title %></h1>
-      <br>
-      <id="piano1><%= image_tag "piano1.jpg" %>
-      <h2><%= @piano.category %></h2>
-      <h3><%= @piano.description %></h3>
-      <br>
-      <%= link_to 'Back', pianos_path %>
+    <div class="card">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h1><%= @piano.title %></h1>
+        <br>
+        <div id="piano1"><%= image_tag "piano1.jpg" %></div>
+        <h2><%= @piano.category %></h2>
+        <h3><%= @piano.description %></h3>
+
+        <h4>Steinway & Sons crée depuis toujours des précédents historiques dans la fabrication de pianos à queue et pianos droits répondant aux exigences de qualité les plus poussées. Avec le développement de plus de 128 brevets, l'entreprise est considérée comme le fondateur de la construction de pianos moderne. Chaque piano à queue Steinway est une pièce unique fabriquée à la main à partir des meilleurs matériaux.</h4>
+        <br>
+        <%= link_to 'Back', pianos_path %>
+      </div>
     </div>
   </div>
 </div>
