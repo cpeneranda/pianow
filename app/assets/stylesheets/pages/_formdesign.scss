@@ -1,5 +1,5 @@
 body{
-    color:darkgrey;
+  color:darkgrey;
   font-family: 'Roboto', sans-serif;
   font-weight:100;
 }
@@ -184,6 +184,37 @@ label {
 .btn-register:focus {
   color: #fff;
   background-color: #2D3B55;
+}
+
+.speed{
+  color: #00cc7e;
+}
+
+.speed:hover{
+  color: #00cc7e;
+}
+
+.btn-facebook{
+  color:#fff;
+  background-color:#3b5998;
+  border-color:rgba(0,0,0,0.2);
+  width: 50%;
+}
+
+.btn-facebook:focus,.btn-facebook.focus{
+  color:#fff;
+  background-color:#2d4373;
+  border-color:rgba(0,0,0,0.2)
+}
+
+.btn-facebook:hover{
+  color:#fff;
+  background-color:#2d4373;
+  border-color:rgba(0,0,0,0.2)
+}
+
+.space{
+  padding-bottom: 20px;
 }
 
 .bookingform {
