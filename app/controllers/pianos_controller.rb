@@ -12,6 +12,7 @@ class PianosController < ApplicationController
 
   def show
     @piano = Piano.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -22,7 +23,7 @@ class PianosController < ApplicationController
     @piano = Piano.new(piano_params)
     @piano.user = current_user
     if @piano.save
-      redirect_to pianos_path(@piano)
+      redirect_to piano_path(@piano)
     else
       render :new
     end
@@ -35,6 +36,9 @@ class PianosController < ApplicationController
   end
 
   def destroy
+    @piano = Piano.find(params[:id])
+    @piano.destroy
+    redirect_to pianos_path(@piano)
   end
 
 private

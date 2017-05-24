@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170524104746) do
 
   # These are extensions that must be enabled in order to support this database
@@ -41,6 +42,11 @@ ActiveRecord::Schema.define(version: 20170524104746) do
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.text   "description"
+  end
+
   create_table "pianos", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -50,8 +56,13 @@ ActiveRecord::Schema.define(version: 20170524104746) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+<<<<<<< HEAD
     t.float    "latitude"
     t.float    "longitude"
+=======
+    t.integer  "brand_id"
+    t.index ["brand_id"], name: "index_pianos_on_brand_id", using: :btree
+>>>>>>> master
     t.index ["user_id"], name: "index_pianos_on_user_id", using: :btree
   end
 
