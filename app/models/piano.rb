@@ -4,3 +4,4 @@ class Piano < ApplicationRecord
   belongs_to :brand
   has_attachment :photo
 end
+

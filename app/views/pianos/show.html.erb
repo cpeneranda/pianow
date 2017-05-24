@@ -10,6 +10,7 @@
             <h3><%= @piano.brand.name %></h3>
             <h4><%= @piano.brand.description %></h4>
             <br>
+            <%= render 'shared/bookingform', piano: @piano, booking: @booking %>
             <%= link_to 'Back', pianos_path, class: "btn-black" %>
           </div>
         </div>
