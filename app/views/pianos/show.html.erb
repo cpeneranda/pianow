@@ -12,7 +12,7 @@
         <h2><%= @piano.category %></h2>
         <h3><%= @piano.description %></h3>
 
-        <h4><%= @piano.brand.name %></h4>
+        <h4><%= @piano.brand.title %></h4>
         <h4><%= @piano.brand.description %></h4>
         <br>
   <%= render 'shared/bookingform', piano: @piano, booking: @booking %>
