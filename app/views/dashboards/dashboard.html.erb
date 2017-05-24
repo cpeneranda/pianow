@@ -1,37 +1,65 @@
-<% if current_user.pianos.size == 0 %>
-  <p>Vous n'avez pas encore mis en ligne de piano</p>
-<% else %>
-  <p>Vos piano</p>
-  <% current_user.pianos.each do |piano| %>
-    <p><%= piano.title %></p>
+<div class="container">
+  <% if current_user.pianos.size == 0 %>
+    <p>Vous n'avez pas encore mis en ligne de piano</p>
+  <% else %>
+    <h3>Vos pianos</h3>
+    <div class="row">
+      <% current_user.pianos.each do |piano| %>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+            </div>
+            <div class="card-info">
+              <div class="card-description">
+                <p><%= piano.price %> €/h - <%= piano.title.capitalize %></p>
+              </div>
+              <div class="card-title">
+                <%= piano.title %>
+              </div>
+              <div class="card-details">
+                <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
+              </div>
+              <div class="card-ranking">
+                <p>
+                  <% 3.times do %>
+                    <i class="fa fa-star"></i>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
 
-<% if current_user.bookings.size == 0 %>
-  <p>Vous n'avez pas encore de réservations</p>
-<% else %>
-  <p>Les gens vous ont réservés : </p>
-  <% current_user.bookings.each do |booking| %>
-    <h5 class="white">Booking numéro <%= booking.id %>
-      <%= booking.end_date %>
-    </h5>
-    <p><%= Piano.find(booking.piano_id).title %></p>
-  <% end %>
-<% end %>
-
-<p>Pianos réservés</p>
-<% if @pianos_with_bookings %>
-  <p>Vous avez réservés les pianos suivants : </p>
-  <% @pianos_with_bookings.each do |piano| %>
-    <% piano.bookings.each do |booking| %>
-    <p><%= booking.start_date %></p>
-      <%= booking.end_date %>
-      <%= booking.user.first_name %>
-      <%= booking.user.last_name %>
+  <h3>Réservations de vos pianos</h3>
+  <% if current_user.bookings.size == 0 %>
+    <p>Vous n'avez pas encore de réservations</p>
+  <% else %>
+    <p>Les gens vous ont réservés : </p>
+    <% current_user.bookings.each do |booking| %>
+      <h5 class="white">Booking numéro <%= booking.id %>
+        <%= booking.end_date %>
+      </h5>
+      <p><%= Piano.find(booking.piano_id).title %></p>
     <% end %>
   <% end %>
-<% else %>
-  <p>Vous n'avez pas de réservations</p>
-<% end %>
+
+  <h3>Vos réservations</h3>
+  <% if @pianos_with_bookings %>
+    <p>Vous avez réservés les pianos suivants : </p>
+    <% @pianos_with_bookings.each do |piano| %>
+      <% piano.bookings.each do |booking| %>
+      <p><%= booking.start_date %></p>
+        <%= booking.end_date %>
+        <%= booking.user.first_name %>
+        <%= booking.user.last_name %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>Vous n'avez pas de réservations</p>
+  <% end %>
 
 
+</div>
