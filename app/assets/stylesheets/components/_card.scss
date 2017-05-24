@@ -1,42 +1,58 @@
+.card-picture {
+  width: 100%;
+}
+
+.card-category {
+  position: absolute;
+  text-align: center;
+  color: white;
+  top: 50px;
+  left: 10px;
+  font-size: 20px;
+  font-style: bold;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  background-color: #f4f4f4;
+}
 
 .card {
-  width: 800px;
-  margin: auto;
-  border: 1px white;
-  border-radius: 5px;
   background-color: white;
   color: #162C46;
-  padding: 40px ;
+}
+
+.card-description {
+  padding: 40px;
+  text-align: justify;
+  text-align: center;
+}
+
+.card-description h1 {
+  color: #162C46;
+}
+
+.card-description h2 {
+  color: #162C46;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-description h3 {
+  color: #162C46;
+  font-family: times;
+}
+
+.card-description h4 {
+  color: #162C46;
+  font-size: 16px;
+  font-family: times;
+  font-style: italic;
+  padding: 20px 40px 10px 40px;
   text-align: justify;
 }
 
-.card h1 {
-  color: #162C46;
-  text-align: center;
-}
-
-.card h2 {
-  font-size: 20px;
-  font-weight: bold;
-  color: #162C46;
-}
-
-.card h3 {
-  font-size: 18px;
-  color: #162C46;
-}
-
-.card h4 {
-  font-size: 14px;
-  font-family: italic;
-  color: #162C46;
-}
-
-#piano_picture {
-  text-align: center;
-}
-
-.btn-blue {
+.btn-black {
   background-color: white;
   color: #162C46;
   width: 40px;
@@ -48,7 +64,9 @@
   font-weight: bold;
 }
 
-.btn-blue:hover {
+.btn-black:hover {
   background-color: #f4f4f4;
   text-decoration: none;
 }
+
+
