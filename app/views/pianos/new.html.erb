@@ -1,2 +1,7 @@
-<h1>Pianos#new</h1>
-<p>Find me in app/views/pianos/new.html.erb</p>
+<h1 class="text-center">Nouveau Piano</h1>
+<br>
+
+
+<%= render 'form', piano: @piano %>
+
+<%= link_to 'Back', pianos_path %>
