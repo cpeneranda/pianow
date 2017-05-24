@@ -35,3 +35,29 @@ p, h1, h2, h3 {
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
 }
+
+.btn-go {
+    padding: 14px 24px;
+    border: 0 none;
+    border-radius: 10%;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: white;
+    color: $green;
+}
+
+.btn-go:focus, .btn-go:active:focus, .btn-go.active:focus {
+    outline: 0 none;
+}
+
+
+.btn-go:hover, .btn-go:focus, .btn-go:active, .btn-go.active, .open > .dropdown-toggle.btn-go {
+    background: $green;
+    color: white;
+}
+
+.btn-go:active, .btn-go.active {
+    background: #007299;
+    box-shadow: none;
+}
