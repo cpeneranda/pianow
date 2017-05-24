@@ -28,6 +28,9 @@ class PianosController < ApplicationController
   end
 
   def destroy
+    @piano = Piano.find(params[:id])
+    @piano.destroy
+    redirect_to pianos_path(@piano)
   end
 
 private
