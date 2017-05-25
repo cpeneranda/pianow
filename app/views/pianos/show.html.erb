@@ -2,30 +2,34 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
       <div class="card">
-        <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano1.jpg')%>')">
-          <div class="card-category"><%= @piano.category %></div>
-        </div>
-        <div class="card-description">
-          <h1><%= @piano.title %></h1>
-          <h2><%= @piano.description %></h2>
-          <h3><%= @piano.brand.name %></h3>
-          <h4><%= @piano.brand.description %></h4>
-          <div class="bookingform">
-            <%= simple_form_for [@piano, @booking] do |f| %>
-              <%= f.error_notification %>
-              <div class="form-inputs">
-                <input data-provide="datepicker" data-date-format="yyyy-mm-dd" name="booking[start_date]">
-                <input data-provide="datepicker" data-date-format="yyyy-mm-dd" name="booking[end_date]">
-               <%#= datepicker_input f, :start_date%>
-               <%#= datepicker_input f, :end_date%>
-              </div>
-              <div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-actions text-center">
-                    <%= f.button :submit, "Book", class: "btn-black"  %>
+        <div class="card-picture"
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @piano.photo.path, height: 300, width: 400, crop: :fill %>')">
+            <div class="card-category"><%= @piano.category %></div>
+          </div>
+          <div class="card-description">
+            <h1><%= @piano.title %></h1>
+            <h2><%= @piano.description %></h2>
+            <h3><%= @piano.brand.name %></h3>
+            <h4><%= @piano.brand.description %></h4>
+            <div class="bookingform">
+              <%= simple_form_for [@piano, @booking] do |f| %>
+                <%= f.error_notification %>
+                <div class="form-inputs">
+                  <input data-provide="datepicker" data-date-format="yyyy-mm-dd" name="booking[start_date]">
+                  <input data-provide="datepicker" data-date-format="yyyy-mm-dd" name="booking[end_date]">
+                 <%#= datepicker_input f, :start_date%>
+                 <%#= datepicker_input f, :end_date%>
                 </div>
-              </div>
-            <% end %>
+                <div>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-actions text-center">
+                      <%= f.button :submit, "Book", class: "btn-black"  %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <br>
+            <%= link_to 'Back', pianos_path, class: "btn-black" %>
           </div>
           <br>
           <%= link_to 'Back', pianos_path, class: "btn-black" %>
