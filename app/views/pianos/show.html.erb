@@ -14,8 +14,10 @@
             <%= simple_form_for [@piano, @booking] do |f| %>
               <%= f.error_notification %>
               <div class="form-inputs">
-                <%= f.input :start_date, label_html: { class: 'label-form datepicker' }, input_html: { class: 'input-form' }, placeholder: 'Start Date' %>
-                <%= f.input :end_date, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'End Date'   %>
+                <input data-provide="datepicker" data-date-format="yyyy-mm-dd" name="booking[start_date]">
+                <input data-provide="datepicker" data-date-format="yyyy-mm-dd" name="booking[end_date]">
+               <%#= datepicker_input f, :start_date%>
+               <%#= datepicker_input f, :end_date%>
               </div>
               <div>
               <div class="col-xs-12 col-sm-6">
@@ -33,3 +35,5 @@
     </div>
   </div>
 </div>
+
+
