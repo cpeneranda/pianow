@@ -8,34 +8,46 @@
   background: black;
   opacity: 0;
 }
+
 .cards {
   box-shadow: 1px 1px 1px lightgrey;
-  max-width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .cards-picture {
   background-size: cover;
-  height: 250px;
+  background-position: center;
+  height: 100%;
   width: 100%;
   border-radius: 2px 2px 0 0;
+  transition: all ease 0.9s;
 }
 
 .cards-info {
   background-color: white;
-  padding: 5px;
+  padding: 20px 15px 15px 15px;
   border-radius: 0 0 2px 2px;
+  position: relative;
 }
 
 .cards-description {
   display: flex;
   font-size: 16px;
+  justify-content: space-between;
 }
 
 .cards-description p {
   color: black;
+  font-size: 24px;
 }
 
+.cards-description #price {
+  color: #00CC7E;
+}
+
+.cards-description .price #euro {
+  font-size: 14px;
+}
 
 .cards-details p {
   color: black;
@@ -59,7 +71,6 @@
   color: black;
 }
 
-
 h1 {
   padding: 15px;
 }
@@ -77,10 +88,35 @@ p {
   height: 100%;
 }
 
-.scroll {
-  overflow: scroll;
-}
-
 .wrapper {
   height: 100vh;
+  display: flex;
+  justify-content: space-between;
 }
+
+.cards-container {
+  height: 100%;
+  overflow: scroll;
+  flex: 1 0 auto;
+  padding: 0 30px;
+  padding-top: 12px;
+}
+
+.map-container {
+  height: 100%;
+  flex: 0 0 40%;
+  position: sticky;
+}
+
+.image-zoom {
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-zoom:hover {
+  .cards-picture {
+    transform: scale(1.2);
+  }
+}
+
