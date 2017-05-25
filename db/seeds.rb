@@ -9,10 +9,29 @@
 Booking.destroy_all
 Piano.destroy_all
 Brand.destroy_all
+User.destroy_all
 
-fiona = User.create(email: "fiona@mail.me", password: "azerty")
-gabriel = User.create(email: "gabriel@mail.me", password: "azerty")
-clement = User.create(email: "clement@mail.me", password: "azerty")
+# USERS
+
+brigitte = User.create(
+  first_name: "Brigitte",
+  last_name: "Trogneux",
+  email: "brigitte@mail.me",
+  password: "azerty")
+
+julie = User.create(
+  first_name: "Julie",
+  last_name: "Gayet",
+  email: "julie@mail.me",
+  password: "azerty")
+
+carla = User.create(
+  first_name: "Carla",
+  last_name: "Bruni",
+  email: "carla@mail.me",
+  password: "azerty")
+
+# BRANDS
 
 steinway = Brand.new(
   name: "Steinway",
@@ -26,6 +45,7 @@ petrof = Brand.new(
   name: "Petrof",
   description: "Le premier piano de l'entreprise Petrof a été construit en 1864 à Hradec Králové, en République tchèque. C'est en 1894 que l'entreprise, d'abord orientée sur le marché local, s'ouvre à l'exportation. Une filiale est du reste ouverte l'année suivante à Temesvar, en Hongrie. En 1928, une filiale est ouverte à Londres, en collaboration avec le prestigieux facteur Steinway & sons.")
 
+# PIANOS
 
 piano01 = Piano.new(
   title: "Steinway",
@@ -34,7 +54,7 @@ piano01 = Piano.new(
   address: "156 Bld Saint Germain 75006 Paris",
   brand: steinway,
   price: 50)
-piano01.user = User.first
+piano01.user = brigitte
 piano01.save
 
 piano02 = Piano.new(
@@ -44,7 +64,7 @@ piano02 = Piano.new(
   address: "26 Bld Raspail 75007 Paris",
   brand: petrof,
   price: 30)
-piano02.user = User.first
+piano02.user = julie
 piano02.save
 
 piano03 = Piano.new(
@@ -54,6 +74,6 @@ piano03 = Piano.new(
   address: "12 Rue de Paris 75010 Paris",
   brand: roland,
   price: 20)
-piano03.user = User.last
+piano03.user = carla
 piano03.save
 
