@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
   has_many :pianos
   has_many :bookings
-  validates_presence_of :first_name, :last_name
+  validates :email, presence: true, uniqueness: true
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
