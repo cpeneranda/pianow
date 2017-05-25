@@ -1,9 +1,6 @@
 class PianosController < ApplicationController
   def index
-    @pianos = Piano.all
-
-    @pianos = Piano.where.not(latitude: nil)
-
+    @pianos = Piano.near(params['address-search'], 10).where.not(latitude: nil)
     @hash = Gmaps4rails.build_markers(@pianos) do |piano, marker|
       marker.lat piano.latitude
       marker.lng piano.longitude

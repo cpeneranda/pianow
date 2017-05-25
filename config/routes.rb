@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :create]
   end
 
-
   get "/dashboards", to: "dashboards#dashboard"
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

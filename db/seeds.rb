@@ -71,7 +71,7 @@ piano03 = Piano.new(
   title: "Roland",
   description: "Clavier midi pour live",
   category: "Synthé",
-  address: "12 Rue de Paradis 75010 Paris",
+  address: "16 Villa Gaudelet 75011 Paris",
   brand: roland,
   price: 20)
 piano03.user = carla
