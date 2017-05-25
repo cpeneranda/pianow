@@ -22,6 +22,7 @@ gem 'figaro'
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
+gem 'bootstrap-datepicker-rails'
 
 gem 'coffee-rails'
 gem "gmaps4rails"
