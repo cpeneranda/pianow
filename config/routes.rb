@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'dashboards/dashboard'
+  get 'dashboard', to: "dashboards#dashboard"
 
   resources :pianos do
     resources :bookings, only: [ :create]
   end
 
+  resources :bookings, only: [ :update]
 
-  get "/dashboards", to: "dashboards#dashboard"
+  mount Attachinary::Engine => "/attachinary"
+
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  mount Attachinary::Engine => "/attachinary"
 end

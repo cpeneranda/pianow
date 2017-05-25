@@ -8,7 +8,11 @@
             <div class="col-xs-6 col-sm-6 col-lg-6">
               <div class="cards">
                 <%= link_to "", piano_path(piano), class: "cards-link" %>
-                <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('piano_1.jpg')%>')">
+                <% if piano.photo %>
+                  <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path piano.photo.path, height: 300, width: 400, crop: :fill %>')">
+                <% else %>
+                  <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'piano_1.jpg'%>')">
+                <% end %>
                 </div>
                 <div class="cards-info">
                   <div class="cards-description">
