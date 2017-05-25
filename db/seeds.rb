@@ -67,7 +67,7 @@ piano01 = Piano.new(
   title: "Steinway",
   description: "Piano d'anthologie en bois verni",
   category: "Piano a queue",
-  address: "156 Bld Saint Germain 75006 Paris",
+  address: "156 Boulevard Saint Germain 75006 Paris",
   brand: steinway,
   price: 50)
 piano01.user = brigitte
@@ -77,7 +77,7 @@ piano02 = Piano.new(
   title: "Petrof",
   description: "Piano de competition",
   category: "Piano droit",
-  address: "26 Bld Raspail 75007 Paris",
+  address: "26 Boulevard Raspail 75007 Paris",
   brand: petrof,
   price: 30)
 piano02.user = julie
@@ -87,7 +87,7 @@ piano03 = Piano.new(
   title: "Roland",
   description: "Clavier midi pour live",
   category: "Synthé",
-  address: "12 Rue de Paris 75010 Paris",
+  address: "16 Villa Gaudelet 75011 Paris",
   brand: roland,
   price: 20)
 piano03.user = carla

@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 20170525161841) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.integer  "brand_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "brand_id"
     t.index ["brand_id"], name: "index_pianos_on_brand_id", using: :btree
     t.index ["user_id"], name: "index_pianos_on_user_id", using: :btree
   end
