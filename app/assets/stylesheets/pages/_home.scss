@@ -3,8 +3,15 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
+ * {
+   margin: 0;
+   padding: 0;
+ }
+
  body {
-  background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), image-url('background.jpg');
+  overflow-x: hidden;
+  // background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
+  background-color: #eeeeee;
 }
 
 p, h1, h2, h3 {
@@ -14,10 +21,13 @@ p, h1, h2, h3 {
 .banner {
   color: white;
   text-align: center;
-  height: 100vh;
+  background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
+  // height: 100vh;
+  height: calc(100vh - 70px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
 }
@@ -91,4 +101,16 @@ p, h1, h2, h3 {
 .btn-go:active, .btn-go.active {
   background: #007299;
   box-shadow: none;
+}
+
+.video-bg{
+  position: absolute;
+  z-index: -99;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.1);
+}
+
+iframe{
+  width: 100%;
 }
