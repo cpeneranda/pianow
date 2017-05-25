@@ -1,7 +1,7 @@
 <div class="banner">
 <div class="video-bg">
-    <iframe frameborder="0" height="100%" width="100%"
-    src="https://youtube.com/embed/yUJwC7INGNo?autoplay=1&controls=0&showinfo=0&autohide=1">
+    <iframe id="my-video" frameborder="0" height="100%" width="100%"
+    src="https://youtube.com/embed/yUJwC7INGNo?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1">
   </iframe>
 </div>
 <div class="banner-content">
@@ -28,4 +28,6 @@
 
 <%= content_for(:after_js) do %>
 <script src="https://maps.google.com/maps/api/js?libraries=places&amp;key=#{ENV['GOOGLE_API_BROWSER_KEY']}"></script>
+<script async src="https://www.youtube.com/iframe_api"></script>
+
 <% end %>
