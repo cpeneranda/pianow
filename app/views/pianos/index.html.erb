@@ -1,7 +1,14 @@
 <div class="wrapper">
   <div class="cards-container">
     <div class="row">
-      <% @pianos.each do |piano| %>
+    <% if @pianos.size == 0 %>
+      <div id="error_message">
+        <p>There is no piano around you!</p>
+        <br>
+        <%= image_tag "minion.png" %>
+      </div>
+    <% else %>
+     <% @pianos.each do |piano| %>
         <div class="col-xs-6 col-sm-6 col-lg-6">
           <div class="cards">
             <div class="image-zoom">
@@ -44,6 +51,7 @@
             </div>
           </div>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>
