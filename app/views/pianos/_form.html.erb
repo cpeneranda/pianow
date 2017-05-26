@@ -1,27 +1,22 @@
 <div class="container">
-  <%= simple_form_for(@piano) do |f| %>
-  <div class="col-xs-12 col-sm-6 form">
-    <%= f.error_notification %>
+      <%= simple_form_for(@piano) do |f| %>
+  <div class="card">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+        <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :title, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Title' %>
-      <%= f.input :description, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Description'   %>
-      <%= f.input :category, collection: Piano::CATEGORIES, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Category'   %>
-      <%= f.input :brand_id, collection: Brand.all, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Brand'   %>
-      <%= f.input :address, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Address'   %>
-      <%= f.input :price, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: '€'   %>
-    </div>
+        <div class="form-inputs">
+          <%= f.input :title, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Title' %>
+          <%= f.input :description, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Description'   %>
+          <%= f.input :category, collection: Piano::CATEGORIES, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Category'   %>
+          <%= f.input :brand_id, collection: Brand.all, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Brand'   %>
+          <%= f.input :address, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Address'   %>
+          <%= f.input :price, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: '€'   %>
+          <%= f.input :photo, as: :attachinary, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }   %>
+            <div class="form-actions text-center">
+              <%= f.button :submit, "Créer un piano", class: "text-center"  %>
+            </div>
+        </div>
+      </div>
+      <% end %>
   </div>
-
-  <div class="col-xs-12 col-sm-1 "></div>
-
-  <div class="col-xs-12 col-sm-5 form">
-    <%= f.input :photo, as: :attachinary, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }   %>
-  </div>
-  <div class="col-xs-12 form button">
-    <div class="form-actions text-center">
-      <%= f.button :submit, "Créer un piano", class: "text-center"  %>
-    </div>
-  </div>
-  <% end %>
 </div>
