@@ -41,35 +41,32 @@
     </div>
   <% end %>
 
-<div class="row">
+
   <h3>Réservations de vos pianos</h3>
   <% if current_user.bookings.size == 0 %>
     <p>Vous n'avez pas encore de réservations</p>
   <% else %>
     <% current_user.pianos.each do |piano| %>
       <% piano.bookings.each do |booking| %>
-        <div class="col-xs-12 col-sm-6 col-lg-8 col-lg-offset-2">
-          <div class="cardss">
-            <div class="cards-info">
-              <%= link_to "", piano_path(piano), class: "cards-link" %>
-              <% if booking.user.facebook_picture_url.present? %>
-                  <%= image_tag booking.user.facebook_picture_url, class: 'avatar' %>
-                <% else %>
-                  <%= image_tag 'logo.png', class: 'avatar' %>
-              <% end %>
-              <div class="cards-description">
-                <p id="price"><%= piano.price %> €/h</p>
-              </div>
-              <div class="cards-details">
-                <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
-                <p><%= booking.start_date %></p>
-                <p><%= booking.end_date %></p>
-                <% if piano.photo %>
-                  <%= cl_image_tag piano.photo.path, height: 300, width: 400, crop: :fill %>
-                <% else %>
-                  <%= image_tag 'piano_1.jpg'%>
+        <div class="row">
+
+              <div class="profile-picture col-xs-12 col-md-2 col-lg-2 col-lg-offset-1">
+
+                <% if booking.user.facebook_picture_url.present? %>
+                    <%= image_tag booking.user.facebook_picture_url, class: 'avatar' %>
+                  <% else %>
+                    <%= image_tag 'logo.png', class: 'avatar' %>
                 <% end %>
               </div>
+              <div class="cards-info col-md-4">
+                <div class="cards-description">
+                  <p id="price"><%= piano.price %> €/h</p>
+                </div>
+                <div class="cards-details">
+                  <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
+                  <p><%= booking.start_date %></p>
+                  <p><%= booking.end_date %></p>
+                </div>
 
       <p><%= Piano.find(booking.piano_id).title %></p>
         <% if booking.status == "pending" %>
@@ -82,30 +79,54 @@
         <p> Vous avez décliné la réservation</p>
         <% end %>
               </div>
-          </div>
-        </div>
+              <div class="card-picture-rigth col-md-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path piano.photo.path, height: 300, width: 400, crop: :fill %>')">
+              </div>
+
+
+
+
+      </div>
     <% end %>
   <% end %>
-</div>
 <div>
   <h3>Vous avez réservés les pianos suivants :</h3>
   <% if @pianos_with_bookings %>
     <div class="row">
-      <div class="col-sm-6">
-        <div class="card">
           <% @pianos_with_bookings.each do |piano| %>
             <% piano.bookings.each do |booking| %>
-            <p><%= booking.start_date %></p>
-            <p><%= booking.end_date %></p>
-              <%= booking.user.first_name %>
-              <%= booking.user.last_name %>
-                <% if booking.status == "pending" %>
-                  <p>Vous avez une réservation en attente de validation</p>
-                <% elsif booking.status == "accepted"%>
-                <p> La réservation a été acceptée </p>
-                <% else %>
-                <p> La réservation a été délinée</p>
-                <% end %>
+              <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="cards">
+                  <div class="image-zoom">
+                    <% if piano.photo %>
+                      <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path piano.photo.path, height: 300, width: 400, crop: :fill %>')">
+                      </div>
+                    <% else %>
+                      <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'piano_1.jpg'%>')">
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="cards-info">
+
+                    <%= link_to "", piano_path(piano), class: "cards-link" %>
+                    <div class="cards-description">
+                      <p><%= piano.title.capitalize %></p>
+                      <p id="price"><%= piano.price %> €/h</p>
+                    </div>
+                    <div class="cards-details">
+                    <p><%= booking.start_date %></p>
+                      <%= booking.user.first_name %>
+                      <%= booking.user.last_name %>
+                        <% if booking.status == "pending" %>
+                          <p>Vous avez une réservation en attente de validation</p>
+                        <% elsif booking.status == "accepted"%>
+                        <p> La réservation a été acceptée </p>
+                        <% else %>
+                        <p> La réservation a été déclinée</p>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <% end %>
             <% end %>
     <% else %>
