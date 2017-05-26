@@ -7,6 +7,11 @@ class PianosController < ApplicationController
     @hash = Gmaps4rails.build_markers(@pianos) do |piano, marker|
       marker.lat piano.latitude
       marker.lng piano.longitude
+      marker.picture ({
+                        "url" => ApplicationController.helpers.asset_path("marker.png"),
+                        "width" => 40,
+                        "height" => 74,
+        })
     end
   end
 
@@ -41,9 +46,22 @@ class PianosController < ApplicationController
     redirect_to pianos_path(@piano)
   end
 
+  def gmaps4rails_marker_picture
+    {
+     "picture" => "/images/heart.png",
+     "width" => 20,
+     "height" => 20,
+     "marker_anchor" => [ 5, 10],
+     "shadow_picture" => "/images/morgan.png" ,
+     "shadow_width" => "110",
+     "shadow_height" => "110",
+     "shadow_anchor" => [5, 10],
+    }
+  end
+
 private
 
- def piano_params
+  def piano_params
     params.require(:piano).permit(:title, :description, :address, :category, :price, :photo)
   end
 end
