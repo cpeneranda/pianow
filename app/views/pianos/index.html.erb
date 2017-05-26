@@ -1,39 +1,57 @@
 <div class="wrapper">
   <div class="cards-container">
     <div class="row">
+    <% if @pianos.size == 0 %>
+      <div id="error_message">
+        <p>There is no piano around you!</p>
+        <br>
+        <%= image_tag "minion.png" %>
+      </div>
+    <% else %>
      <% @pianos.each do |piano| %>
         <div class="col-xs-6 col-sm-6 col-lg-6">
           <div class="cards">
             <div class="image-zoom">
+              <div class="cards-avatar">
+                <% if piano.user.facebook_picture_url %>
+                  <%= image_tag user.facebook_picture_url, class: "avatar"%>
+                <% else %>
+                  <%= image_tag "profil_icon.png", class: "avatar" %>
+                <% end %>
+              </div>
               <% if piano.photo %>
                 <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path piano.photo.path, height: 300, width: 400, crop: :fill %>')">
+                  <%= link_to "", piano_path(piano), class: "cards-link" %>
                 </div>
               <% else %>
                 <div class="cards-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'piano_1.jpg'%>')">
+                  <%= link_to "", piano_path(piano), class: "cards-link" %>
                 </div>
               <% end %>
             </div>
             <div class="cards-info">
-              <%= link_to "", piano_path(piano), class: "cards-link" %>
               <div class="cards-description">
                 <p><%= piano.title.capitalize %></p>
-                <p id="price"><%= piano.price %> €/h</p>
+                <p id="price"><%= piano.price %> <span class="euro">€/h</span></p>
               </div>
               <div class="cards-details">
                 <p><%= piano.category.capitalize %> chez <%= piano.user.first_name %></p>
               </div>
               <div class="cards-ranking">
                 <p>
-                  <% 3.times do %>
+                  <% rand(0..5).times do %>
                     <i class="fa fa-star"></i>
                   <% end %>
                 </p>
-                <p>16 commentaires</p>
-                <p><i class="fa fa-heart"></i></p>
+                <p><%= rand(0..25) %> commentaires</p>
+              </div>
+              <div class="wishlist">
+                <i class="fa fa-heart-o"></i>
               </div>
             </div>
           </div>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>
@@ -46,209 +64,208 @@
   <script>
     $(document).ready(function() {
       var styles = [
-                {
-                    "featureType": "all",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "saturation": 36
-                        },
-                        {
-                            "color": "#333333"
-                        },
-                        {
-                            "lightness": 40
-                        }
-                    ]
-                },
-                {
-                    "featureType": "all",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "featureType": "all",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "color": "#fefefe"
-                        },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "color": "#fefefe"
-                        },
-                        {
-                            "lightness": 17
-                        },
-                        {
-                            "weight": 1.2
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#f5f5f5"
-                        },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#f5f5f5"
-                        },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#dedede"
-                        },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 17
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 29
-                        },
-                        {
-                            "weight": 0.2
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 18
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#f2f2f2"
-                        },
-                        {
-                            "lightness": 19
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#e9e9e9"
-                        },
-                        {
-                            "lightness": 17
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "color": "#46c58c"
-                        }
-                    ]
-                }
-            ]
+      {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+        {
+          "saturation": 36
+        },
+        {
+          "color": "#333333"
+        },
+        {
+          "lightness": 40
+        }
+        ]
+      },
+      {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+        {
+          "visibility": "on"
+        },
+        {
+          "color": "#ffffff"
+        },
+        {
+          "lightness": 16
+        }
+        ]
+      },
+      {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+        {
+          "visibility": "off"
+        }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+        {
+          "color": "#fefefe"
+        },
+        {
+          "lightness": 20
+        }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+        {
+          "color": "#fefefe"
+        },
+        {
+          "lightness": 17
+        },
+        {
+          "weight": 1.2
+        }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+        {
+          "color": "#f5f5f5"
+        },
+        {
+          "lightness": 20
+        }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+        {
+          "color": "#f5f5f5"
+        },
+        {
+          "lightness": 21
+        }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+        {
+          "color": "#dedede"
+        },
+        {
+          "lightness": 21
+        }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+        {
+          "color": "#ffffff"
+        },
+        {
+          "lightness": 17
+        }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+        {
+          "color": "#ffffff"
+        },
+        {
+          "lightness": 29
+        },
+        {
+          "weight": 0.2
+        }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+        {
+          "color": "#ffffff"
+        },
+        {
+          "lightness": 18
+        }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+        {
+          "color": "#ffffff"
+        },
+        {
+          "lightness": 16
+        }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+        {
+          "color": "#f2f2f2"
+        },
+        {
+          "lightness": 19
+        }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+        {
+          "color": "#e9e9e9"
+        },
+        {
+          "lightness": 17
+        }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+        {
+          "color": "#46c58c"
+        }
+        ]
+      }
+      ]
       var handler = Gmaps.build('Google');
       handler.buildMap({
         provider: {
           styles: styles
         },
         internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(14);
+          }
+        });
     });
   </script>
 <% end %>
-

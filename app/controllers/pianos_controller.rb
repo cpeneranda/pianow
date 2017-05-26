@@ -1,13 +1,19 @@
 class PianosController < ApplicationController
   def index
-
-    @pianos = Piano.all
-    @pianos = Piano.where.not(latitude: nil)
-    @pianos = Piano.near(params['address-search'], 10).where.not(latitude: nil)
+    if params[:search]
+      @pianos = Piano.near(params[:search], 10).where.not(latitude: nil)
+    else
+      @pianos = Piano.all
+    end
 
     @hash = Gmaps4rails.build_markers(@pianos) do |piano, marker|
       marker.lat piano.latitude
       marker.lng piano.longitude
+      marker.picture ({
+                        "url" => ApplicationController.helpers.asset_path("marker.png"),
+                        "width" => 40,
+                        "height" => 74,
+        })
     end
   end
 
@@ -40,6 +46,19 @@ class PianosController < ApplicationController
     @piano = Piano.find(params[:id])
     @piano.destroy
     redirect_to pianos_path(@piano)
+  end
+
+  def gmaps4rails_marker_picture
+    {
+     "picture" => "/images/heart.png",
+     "width" => 20,
+     "height" => 20,
+     "marker_anchor" => [ 5, 10],
+     "shadow_picture" => "/images/morgan.png" ,
+     "shadow_width" => "110",
+     "shadow_height" => "110",
+     "shadow_anchor" => [5, 10],
+    }
   end
 
 private
