@@ -21,6 +21,7 @@
   width: 100%;
   border-radius: 2px 2px 0 0;
   transition: all ease 0.9s;
+  position: relative;
 }
 
 .cards-info {
@@ -112,6 +113,7 @@ p {
   height: 250px;
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .image-zoom:hover {
@@ -120,3 +122,34 @@ p {
   }
 }
 
+.euro {
+  font-size: 14px;
+}
+
+.avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: #00CC7E 2px solid;
+}
+
+.cards-avatar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.wishlist {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  i {
+    font-size: 30px;
+  }
+}
+
+.heart {
+  height: 30px;
+  width: 30px;
+}
