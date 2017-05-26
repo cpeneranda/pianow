@@ -1,19 +1,27 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <div id="logo">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png", class: "brand" %>
   <% end %>
-  <h2 class="heading text">Pia<strong>now</strong></h2>
-
+  <h2 class="heading">Pia<strong>now</strong></h2>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
     <!-- Search form -->
-    </form>
+ <!--    <form action="" class="navbar-wagon-search">
+      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
+      <button type="submit" class="navbar-wagon-search-btn">
+        <i class="fa fa-search"></i>
+      </button>
+    </form> -->
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-
+      <!-- Notification -->
+      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+        <div class="badge-container">
+          <i class="fa fa-envelope-o"></i>
+          <div class="badge badge-blue">3</div>
+        </div>
+      <% end %>
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -38,18 +46,13 @@
           </ul>
         </div>
       </div>
-
     <% else %>
-
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
     <% end %>
-
     <!-- Button (call-to-action) -->
     <%= link_to t(".top_call_to_action", default: "New piano"), new_piano_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
-
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
