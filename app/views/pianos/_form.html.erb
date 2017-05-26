@@ -6,7 +6,8 @@
     <div class="form-inputs">
       <%= f.input :title, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Title' %>
       <%= f.input :description, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Description'   %>
-      <%= f.input :category, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Category'   %>
+      <%= f.input :category, collection: Piano::CATEGORIES, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Category'   %>
+      <%= f.input :brand_id, collection: Brand.all, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Brand'   %>
       <%= f.input :address, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Address'   %>
       <%= f.input :price, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: '€'   %>
     </div>

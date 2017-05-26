@@ -11,6 +11,22 @@ Piano.destroy_all
 Brand.destroy_all
 User.destroy_all
 
+
+# # CATEGORY
+
+# piano_a_queue = Piano.new(
+#   category: "Piano à queue")
+
+# piano_droit = Piano.new(
+#   category: "Piano droit")
+
+# synthetiseur = Piano.new(
+#   category: "Synthetiseur")
+
+# clavinova = Piano.new(
+#   category: "Clavinova")
+
+
 # USERS
 
 brigitte = User.create(
@@ -71,9 +87,10 @@ piano03 = Piano.new(
   title: "Roland",
   description: "Clavier midi pour live",
   category: "Synthé",
-  address: "12 Rue de Paradis 75010 Paris",
+  address: "16 Villa Gaudelet 75011 Paris",
   brand: roland,
   price: 20)
 piano03.user = carla
 piano03.save
+
 

@@ -5,10 +5,17 @@ class BookingsController < ApplicationController
     @booking.piano = Piano.find(params[:piano_id])
     @booking.user = current_user
     if @booking.save
-      redirect_to dashboards_path
+      redirect_to dashboard_path
     else
       render :create
     end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to dashboard_path
   end
 
   private
