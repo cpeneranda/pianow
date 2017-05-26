@@ -227,40 +227,40 @@ label {
 }
 
 .stepwizard-step p {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .stepwizard-row {
-    display: table-row;
+  display: table-row;
 }
 
 .stepwizard {
-    display: table;
-    width: 100%;
-    position: relative;
+  display: table;
+  width: 100%;
+  position: relative;
 }
 
 .stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
 }
 
 .stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    z-order: 0;
+  top: 14px;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  z-order: 0;
 
 }
 
 .stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
+  display: table-cell;
+  text-align: center;
+  position: relative;
 }
 
 .btn-circle {
@@ -280,4 +280,14 @@ label {
 
 #piano_photo{
   background-color: #616668;
+  color: white;
+}
+
+.logintest{
+  color: white !important;
+  border-radius: 4%;
+}
+
+.logintest:hover{
+  background-color: #00A768 !important;
 }
