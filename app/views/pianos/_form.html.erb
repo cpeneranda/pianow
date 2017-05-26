@@ -43,7 +43,10 @@
             <div class="form-group">
               <%= f.input :brand_id, collection: Brand.all, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }, placeholder: 'Brand'   %>
             </div>
-            <button class="btn btn-success nextBtn btn-lg pull-right" type="button" >Next</button>
+            <div class="col-xs-offset-right-12">
+              <%= f.input :photo, as: :attachinary, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }   %>
+              <button class="btn btn-success nextBtn btn-lg pull-right" type="button" >Next</button>
+            </div>
           </div>
         </div>
       </div>
@@ -59,12 +62,7 @@
             </div>
           </div>
         </div>
-
-        <div class="col-xs-12 col-sm-1 "></div>
-
-        <div class="col-xs-12 col-sm-5 form">
-          <%= f.input :photo, as: :attachinary, label_html: { class: 'label-form' }, input_html: { class: 'input-form' }   %>
-        </div>
+        <!-- <div class="col-xs-12 col-sm-1 "></div> -->
         <div class="col-xs-12 form button">
           <div class="form-actions text-center">
             <%= f.button :submit, "Créer un piano", class: "text-center btn btn-success btn-lg pull-right"  %>
@@ -75,4 +73,3 @@
   </div>
 </div>
 <% end %>
-</div>
